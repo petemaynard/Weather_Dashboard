@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Weather Dashboard</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<section>
+   <header class="text-center p-2" style="background-color: indigo; color: white;">
+      <h4>Weather Dashboard</h4>
+   </header>
+</section>
+
+<body>
+   <!-- Column on left with cities -->
+   <section class="bg-light text-dark p3 text-center text-sm-start">
+      <div class="container">
+         <div class="row"> <!-- This row will actually contain the whole page except the header-->
+            <div class="col-3">
+               <div class="d-sm-flex align-items-top">
+                  <h2> Search for a <span class="text-warning">City</span></h2>
+               </div>
+               <input type="text" id="cityInput" placeholder="Enter City">
+               <p></p>
+               <button id="searchBtn" type="button" class="btn btn-info">Search</button>
+               <div id="cityList">
+                  <!-- Want to have list of cities inserted here for each city that was previously searched-->
+
+               </div>
+            </div> <!-- End of the column of cities-->
+            <div class="col-9"> <!--This will display current weather-->
+               <div class="row">
+                  <div id="nowWeather" class="col-9" style="border: solid;">
+                  </div>
+               </div>
+
+               <div class="row">
+                  <div class="col-12">
+                     <h4>5-Day Forecast:</h4>
+                  </div>
+               </div>
+               <div class="row">
+                  <div id="day0" class="card p-1" style="width: 18%; background-color: midnightblue; color: white" ;>
+                     <ul id="day0List" class="list-group list-group-flush">
+                     </ul>
+                  </div>
+                  <div id="day1" class="card p-1" style="width: 18%;  background-color: midnightblue; color: white;">
+                     <ul id="day1List" class="list-group list-group-flush">
+                     </ul>
+                  </div>
+                  <div id="day2" class="card p-1" style="width: 18% ;background-color: midnightblue; color: white;">
+                     <ul id="day2List" class="list-group list-group-flush">
+                     </ul>
+                  </div>
+                  <div id="day3" class="card p-1" style="width: 18%; background-color: midnightblue; color: white;">
+                     <ul id="day3List" class="list-group list-group-flush">
+                     </ul>
+                  </div>
+                  <div id="day4" class="card p-1" style="width: 18%; background-color: midnightblue; color: white;">
+                     <ul id="day4List" class="list-group list-group-flush">
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </section>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+   <script src="script.js"></script>
+</body>
+
+</html>
