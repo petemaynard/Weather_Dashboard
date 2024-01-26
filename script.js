@@ -7,14 +7,14 @@ var apiKey = "6743a2674e4ffee9e8a8c6c9f9cbdfb9";
 var lat = 0;
 var lon = 0;
 var iconSrc = "https://openweathermap.org/img/wn/";  // Will need to add rest of URL
-var cityInput;
+var cityInput = document.getElementById("cityInput");
 var nowWeather = $("#nowWeather");
 var cityList = $('#cityList');
 let savedCities = [];
 
 
 function getLatLonAPI(cityName) {
-   var requestGeoURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "+&limit=1&appid=" + apiKey;
+   var requestGeoURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "+&limit=1&appid=" + apiKey;
    fetch(requestGeoURL)
       .then(function (response) {
          return response.json();
@@ -107,16 +107,16 @@ function clearWeather() {
    }
 }
 
-function storeCities() {
-   cityInput = document.getElementById("cityInput");
+function storeCities(cityInput) {
+   //cityInput = document.getElementById("cityInput");
    // Write the city entered to storage by 
    // 1) getting cities currently in storage
    savedCities = JSON.parse(localStorage.getItem('cities'))
    // 2) Add the city just entered to storage   
    if (!savedCities) {
-      savedCities = [cityInput.value];
+      savedCities = [cityInput];
    } else {
-      savedCities.push(cityInput.value);
+      savedCities.push(cityInput);
    }
    // 3) Update the list of cities
    localStorage.setItem('cities', JSON.stringify(savedCities));
@@ -147,15 +147,22 @@ function listCities() {
 
 // This listener is used only for when a new city is entered and the search button is clicked
 $("#searchBtn").on('click', function () {
-   clearWeather();
-   storeCities();
-   listCities();
 
-   cityInput = cityInput.value;
+  let  cityName = cityInput.value;
+  console.log(cityName,cityName.length)
+   if (cityName.length !== 0) {
+      clearWeather();
+      storeCities(cityName);
+      listCities();
+      getLatLonAPI(cityName);
+   }
 
-   getLatLonAPI(cityInput);
+
 
 })
 
+savedCities = JSON.parse(localStorage.getItem('cities'))
+if(savedCities){
 
-listCities();
+   listCities();
+}
