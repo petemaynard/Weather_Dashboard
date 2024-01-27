@@ -149,7 +149,6 @@ function listCities() {
 $("#searchBtn").on('click', function () {
 
   let  cityName = cityInput.value;
-  console.log(cityName,cityName.length)
    if (cityName.length !== 0) {
       clearWeather();
       storeCities(cityName);
